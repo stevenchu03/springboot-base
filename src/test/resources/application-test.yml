@@ -1,0 +1,52 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+  max-http-header-size: 16KB
+  servlet:
+    context-path: /base
+
+management:
+  endpoints:
+    web:
+      base-path: /
+
+spring:
+  flyway:
+    enabled: true
+  jpa:
+    generate-ddl: false
+    show-sql: false
+    properties:
+      hibernate:
+        ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  web:
+    resources:
+      add-mappings: false
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/base
+    username: postgres
+    password: postgres
+    testWhileIdle: true
+    validationQuery: "SELECT 1"
+    hikari:
+      connectionTimeout: "30000"
+      connection-test-query: "SELECT 1"
+      testWhileIdle: true
+      pool-name: "DevPoolMaster"
+      maximum-pool-size: "30"
+      minimum-pool-size: "5"
+      minismum-idle: "5"
+      idle-timeout: "10001"
+      max-life-time: "0"
+      validation-timeout: "5001"
+      connection-timeout: "3002"
+      driver-class-name: "org.postgresql.Driver"
+
+springboot-base:

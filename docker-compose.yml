@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:11.5
+    volumes:
+      - ./docker/data/postgres:/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: base
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  redis:
+    image: redis:latest
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - "6379:6379"
